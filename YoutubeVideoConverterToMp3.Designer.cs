@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoutubeVideoConverterToMp3));
             linkBox = new System.Windows.Forms.TextBox();
             searchBtn = new System.Windows.Forms.Button();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -195,6 +196,7 @@
             Controls.Add(searchBtn);
             Controls.Add(linkBox);
             Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "YoutubeVideoConverterToMp3";
             RightToLeft = System.Windows.Forms.RightToLeft.No;
             Text = "YoutubeVideoConverterToMp3";
