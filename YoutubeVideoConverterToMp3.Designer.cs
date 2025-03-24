@@ -1,4 +1,6 @@
-﻿namespace YoutubeVideoDownloader
+﻿using System.Windows.Forms;
+
+namespace YoutubeVideoDownloader
 {
     partial class YoutubeVideoConverterToMp3
     {
@@ -28,6 +30,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.AutoSize = false;
+            FormBorderStyle = FormBorderStyle.FixedSingle; 
+            MaximizeBox = false;
+            MinimizeBox = true;
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YoutubeVideoConverterToMp3));
             linkBox = new System.Windows.Forms.TextBox();
@@ -45,16 +51,14 @@
             contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(components);
             contextMenuStrip4 = new System.Windows.Forms.ContextMenuStrip(components);
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            webView21 = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)webView21).BeginInit();
             SuspendLayout();
             // 
             // linkBox
             // 
-            linkBox.Location = new System.Drawing.Point(9, 204);
+            linkBox.Location = new System.Drawing.Point(600, 280);
             linkBox.Name = "linkBox";
             linkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             linkBox.Size = new System.Drawing.Size(508, 22);
@@ -62,7 +66,7 @@
             // 
             // searchBtn
             // 
-            searchBtn.Location = new System.Drawing.Point(188, 262);
+            searchBtn.Location = new System.Drawing.Point(760, 350);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new System.Drawing.Size(176, 32);
             searchBtn.TabIndex = 1;
@@ -73,7 +77,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.youtube_logo_hd_8;
-            pictureBox1.Location = new System.Drawing.Point(12, 12);
+            pictureBox1.Location = new System.Drawing.Point(700, 80);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new System.Drawing.Size(266, 158);
             pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -83,7 +87,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.to_png_7_png_image;
-            pictureBox2.Location = new System.Drawing.Point(220, 63);
+            pictureBox2.Location = new System.Drawing.Point(630, 130);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new System.Drawing.Size(97, 54);
             pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -93,7 +97,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.MP3_Logo;
-            pictureBox3.Location = new System.Drawing.Point(340, 50);
+            pictureBox3.Location = new System.Drawing.Point(950, 120);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new System.Drawing.Size(127, 77);
             pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,7 +108,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(9, 187);
+            label1.Location = new System.Drawing.Point(600, 250);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(69, 15);
             label1.TabIndex = 6;
@@ -113,7 +117,7 @@
             // downloadedMusicLabel
             // 
             downloadedMusicLabel.AutoSize = true;
-            downloadedMusicLabel.Location = new System.Drawing.Point(37, 549);
+            downloadedMusicLabel.Location = new System.Drawing.Point(600, 549);
             downloadedMusicLabel.Name = "downloadedMusicLabel";
             downloadedMusicLabel.Size = new System.Drawing.Size(0, 14);
             downloadedMusicLabel.TabIndex = 7;
@@ -121,7 +125,7 @@
             // videoLabel
             // 
             videoLabel.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            videoLabel.Location = new System.Drawing.Point(103, 323);
+            videoLabel.Location = new System.Drawing.Point(680, 400);
             videoLabel.Name = "videoLabel";
             videoLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             videoLabel.Size = new System.Drawing.Size(334, 20);
@@ -130,7 +134,7 @@
             // 
             // musicDownloadBtn
             // 
-            musicDownloadBtn.Location = new System.Drawing.Point(209, 357);
+            musicDownloadBtn.Location = new System.Drawing.Point(790, 430);
             musicDownloadBtn.Name = "musicDownloadBtn";
             musicDownloadBtn.Size = new System.Drawing.Size(114, 23);
             musicDownloadBtn.TabIndex = 10;
@@ -140,7 +144,7 @@
             // 
             // videoDownloadBtn
             // 
-            videoDownloadBtn.Location = new System.Drawing.Point(209, 386);
+            videoDownloadBtn.Location = new System.Drawing.Point(790, 470);
             videoDownloadBtn.Name = "videoDownloadBtn";
             videoDownloadBtn.Size = new System.Drawing.Size(114, 23);
             videoDownloadBtn.TabIndex = 11;
@@ -168,23 +172,11 @@
             contextMenuStrip4.Name = "contextMenuStrip4";
             contextMenuStrip4.Size = new System.Drawing.Size(61, 4);
             // 
-            // webView21
-            // 
-            webView21.AllowExternalDrop = true;
-            webView21.CreationProperties = null;
-            webView21.DefaultBackgroundColor = System.Drawing.Color.White;
-            webView21.Location = new System.Drawing.Point(560, 29);
-            webView21.Name = "webView21";
-            webView21.Size = new System.Drawing.Size(1073, 614);
-            webView21.TabIndex = 12;
-            webView21.ZoomFactor = 1D;
-            // 
             // YoutubeVideoConverterToMp3
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1794, 736);
-            Controls.Add(webView21);
             Controls.Add(videoDownloadBtn);
             Controls.Add(musicDownloadBtn);
             Controls.Add(videoLabel);
@@ -204,7 +196,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)webView21).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -226,6 +217,5 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip4;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Microsoft.Web.WebView2.WinForms.WebView2 webView21;
     }
 }
