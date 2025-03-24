@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeVideoDownloader", "YoutubeVideoDownloader.csproj", "{A1B199DC-4D6D-457C-8C11-533132E4D37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeDownloader.Application", "YoutubeDownloader.Application\YoutubeDownloader.Application.csproj", "{81DF5DB7-06E0-4927-A160-F63A8BA387E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeDownloader.Application", "..\YoutubeDownloader.Application\YoutubeDownloader.Application.csproj", "{848686E2-3C6E-4530-9347-6FF1B65F36AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YoutubeVideoDownloader", "YoutubeVideoDownloader\YoutubeVideoDownloader.csproj", "{6741C38D-72F4-4A89-9395-3710D7B776AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A1B199DC-4D6D-457C-8C11-533132E4D37E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1B199DC-4D6D-457C-8C11-533132E4D37E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1B199DC-4D6D-457C-8C11-533132E4D37E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1B199DC-4D6D-457C-8C11-533132E4D37E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{848686E2-3C6E-4530-9347-6FF1B65F36AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{848686E2-3C6E-4530-9347-6FF1B65F36AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{848686E2-3C6E-4530-9347-6FF1B65F36AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{848686E2-3C6E-4530-9347-6FF1B65F36AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DF5DB7-06E0-4927-A160-F63A8BA387E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DF5DB7-06E0-4927-A160-F63A8BA387E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DF5DB7-06E0-4927-A160-F63A8BA387E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DF5DB7-06E0-4927-A160-F63A8BA387E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6741C38D-72F4-4A89-9395-3710D7B776AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6741C38D-72F4-4A89-9395-3710D7B776AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6741C38D-72F4-4A89-9395-3710D7B776AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6741C38D-72F4-4A89-9395-3710D7B776AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
