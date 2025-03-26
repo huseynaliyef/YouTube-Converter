@@ -63,9 +63,99 @@ namespace YoutubeVideoDownloader.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _13231397871582634758_32 {
+            get {
+                object obj = ResourceManager.GetObject("13231397871582634758-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _13416400251535694869_16 {
+            get {
+                object obj = ResourceManager.GetObject("13416400251535694869-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _17433672311558096232_24 {
+            get {
+                object obj = ResourceManager.GetObject("17433672311558096232-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _17433672311558096232_64 {
+            get {
+                object obj = ResourceManager.GetObject("17433672311558096232-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9783007871529652585_48 {
+            get {
+                object obj = ResourceManager.GetObject("9783007871529652585-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MP3_Logo {
             get {
                 object obj = ResourceManager.GetObject("MP3_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_green_download_button_png_image_6213690 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-green-download-button-png-image_6213690", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_green_download_button_png_image_6213690__2_ {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-green-download-button-png-image_6213690 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_green_download_button_png_image_6213690__3_ {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-green-download-button-png-image_6213690 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngtree_green_download_button_png_image_62136901 {
+            get {
+                object obj = ResourceManager.GetObject("pngtree-green-download-button-png-image_62136901", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

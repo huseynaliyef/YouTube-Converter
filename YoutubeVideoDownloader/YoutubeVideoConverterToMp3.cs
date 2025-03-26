@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using YoutubeDownloader.Application.Implementations;
+﻿using YoutubeDownloader.Application.Implementations;
 using YoutubeDownloader.Application.Interfaces;
 
 namespace YoutubeVideoDownloader
@@ -13,6 +10,11 @@ namespace YoutubeVideoDownloader
         {
             InitializeComponent();
             _downloaderService = new DownloaderService();
+
+            downloadComboBox.Items.Add("Mp3");
+            downloadComboBox.Items.Add("Mp4");
+            downloadComboBox.SelectedIndex = 0;
+            downloadComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private async void searchBtn_Click(object sender, EventArgs e)
@@ -20,75 +22,100 @@ namespace YoutubeVideoDownloader
             await Search(linkBox.Text);
         }
 
-        private async void musicDownloadBtn_Click(object sender, EventArgs e)
+        private async void downloadBtn_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
-                folderDialog.Description = "Select a folder to save the music";
+                var title = downloadComboBox.SelectedIndex == 0 ? "music" : "video";
+
+                folderDialog.Description = $"Select a folder to save the {title}";
                 folderDialog.ShowNewFolderButton = true;
 
                 if (folderDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string selectedPath = folderDialog.SelectedPath;
-                    await DownloadAudioAsync(linkBox.Text, selectedPath);
-                }
-            }
-        }
-
-        private async void videoDownloadBtn_Click(object sender, EventArgs e)
-        {
-            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
-            {
-                folderDialog.Description = "Select a folder to save the video";
-                folderDialog.ShowNewFolderButton = true;
-
-                if (folderDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string selectedPath = folderDialog.SelectedPath;
-                    await DownloadVideoAsync(linkBox.Text, selectedPath);
+                    var selectedPath = folderDialog.SelectedPath;
+                    switch (downloadComboBox.SelectedIndex)
+                    {
+                        case 0:
+                            await DownloadAudioAsync(linkBox.Text, selectedPath);
+                            break;
+                        case 1:
+                            await DownloadVideoAsync(linkBox.Text, selectedPath);
+                            break;
+                    }
                 }
             }
         }
 
         private void YoutubeVideoConverterToMp3_Load(object sender, EventArgs e)
         {
-            musicDownloadBtn.Visible = false;
-            videoDownloadBtn.Visible = false;
+            downloadComboBox.Visible = false;
+            downloadBtn.Visible = false;
         }
 
-        #region privates
+        #region private logic
 
         private async Task Search(string url)
         {
-            var videoInfo = await _downloaderService.GetVideoInfoAsync(url);
+            try
+            {
+                var videoInfo = await _downloaderService.GetVideoInfoAsync(url);
 
-            downloadedMusicLabel.Text = "";
-            videoLabel.Text = videoInfo.Title;
-            musicDownloadBtn.Visible = true;
-            videoDownloadBtn.Visible = true;
+                downloadedMusicLabel.Text = "";
+                videoLabel.Text = videoInfo.Title;
+                downloadComboBox.Visible = true;
+                downloadBtn.Visible = true;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
         private async Task DownloadAudioAsync(string url, string path)
         {
-            downloadedMusicLabel.Text = videoLabel.Text + " audio installing..";
+            try
+            {
+                downloadedMusicLabel.Text = videoLabel.Text + " audio installing..";
 
-            await _downloaderService.DonloadAudioAsync(url, path);
+                await _downloaderService.DonloadAudioAsync(url, path);
 
-            downloadedMusicLabel.Text = videoLabel.Text + " audio installed.";
+                downloadedMusicLabel.Text = videoLabel.Text + " audio installed.";
 
-            MessageBox.Show("Music successfully downloaded.");
+                MessageBox.Show("Music successfully downloaded.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private async Task DownloadVideoAsync(string url, string path)
         {
-            downloadedMusicLabel.Text = videoLabel.Text + " video installing..";
+            try
+            {
+                downloadedMusicLabel.Text = videoLabel.Text + " video installing..";
 
-            await _downloaderService.DonloadVideoAsync(url, path);
+                await _downloaderService.DonloadVideoAsync(url, path);
 
-            downloadedMusicLabel.Text = videoLabel.Text + " video installed.";
+                downloadedMusicLabel.Text = videoLabel.Text + " video installed.";
 
-            MessageBox.Show("Video successfully downloaded.");
+                MessageBox.Show("Video successfully downloaded.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         #endregion
+
+        private async void linkBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                await Search(linkBox.Text);
+            }
+        }
     }
 }

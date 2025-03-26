@@ -29,7 +29,7 @@ namespace YoutubeDownloader.Application.Implementations
         public async Task<VideoInfoModel> GetVideoInfoAsync(string url)
         {
             if (string.IsNullOrEmpty(url))
-                throw new ArgumentNullException("You mast paste any youtube video url.");
+                throw new Exception("You mast paste any youtube video url.");
 
             var video = await _youtubeClient.Videos.GetAsync(url);
 
