@@ -47,17 +47,22 @@ namespace YoutubeVideoDownloader
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             downloadBtn = new Button();
             downloadComboBox = new ComboBox();
+            onlinePictureBox = new PictureBox();
+            onlineLable = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)onlinePictureBox).BeginInit();
             SuspendLayout();
             // 
             // linkBox
             // 
+            linkBox.BackColor = SystemColors.Control;
+            linkBox.Font = new Font("Verdana", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             linkBox.Location = new Point(160, 269);
             linkBox.Name = "linkBox";
             linkBox.RightToLeft = RightToLeft.No;
-            linkBox.Size = new Size(508, 22);
+            linkBox.Size = new Size(514, 27);
             linkBox.TabIndex = 0;
             linkBox.KeyDown += linkBox_KeyDown;
             // 
@@ -68,17 +73,17 @@ namespace YoutubeVideoDownloader
             searchBtn.Cursor = Cursors.Hand;
             searchBtn.FlatAppearance.BorderSize = 0;
             searchBtn.FlatStyle = FlatStyle.Flat;
-            searchBtn.Image = Properties.Resources._13416400251535694869_16;
-            searchBtn.Location = new Point(672, 267);
+            searchBtn.Image = (Image)resources.GetObject("searchBtn.Image");
+            searchBtn.Location = new Point(639, 271);
             searchBtn.Name = "searchBtn";
-            searchBtn.Size = new Size(35, 26);
+            searchBtn.Size = new Size(32, 21);
             searchBtn.TabIndex = 1;
             searchBtn.UseVisualStyleBackColor = false;
             searchBtn.Click += searchBtn_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.youtube_logo_hd_8;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(139, 71);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(232, 158);
@@ -88,7 +93,7 @@ namespace YoutubeVideoDownloader
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.to_png_7_png_image;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(347, 121);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(97, 54);
@@ -98,7 +103,7 @@ namespace YoutubeVideoDownloader
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.MP3_Logo;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(488, 109);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(127, 77);
@@ -159,13 +164,13 @@ namespace YoutubeVideoDownloader
             // 
             downloadBtn.BackColor = Color.Transparent;
             downloadBtn.Cursor = Cursors.Hand;
-            downloadBtn.FlatAppearance.BorderSize = 0;
+            downloadBtn.FlatAppearance.BorderColor = Color.Silver;
             downloadBtn.FlatStyle = FlatStyle.Flat;
-            downloadBtn.Image = Properties.Resources.pngtree_green_download_button_png_image_6213690__3_;
-            downloadBtn.Location = new Point(312, 387);
+            downloadBtn.Image = (Image)resources.GetObject("downloadBtn.Image");
+            downloadBtn.Location = new Point(280, 388);
             downloadBtn.Name = "downloadBtn";
-            downloadBtn.Size = new Size(166, 36);
-            downloadBtn.TabIndex = 13;
+            downloadBtn.Size = new Size(172, 33);
+            downloadBtn.TabIndex = 18;
             downloadBtn.UseVisualStyleBackColor = false;
             downloadBtn.Click += downloadBtn_Click;
             // 
@@ -174,19 +179,37 @@ namespace YoutubeVideoDownloader
             downloadComboBox.BackColor = Color.White;
             downloadComboBox.Cursor = Cursors.Hand;
             downloadComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            downloadComboBox.FlatStyle = FlatStyle.Flat;
-            downloadComboBox.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            downloadComboBox.Font = new Font("Tahoma", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             downloadComboBox.FormattingEnabled = true;
-            downloadComboBox.Location = new Point(318, 429);
+            downloadComboBox.ImeMode = ImeMode.NoControl;
+            downloadComboBox.Location = new Point(458, 388);
             downloadComboBox.Name = "downloadComboBox";
-            downloadComboBox.Size = new Size(155, 27);
-            downloadComboBox.TabIndex = 14;
+            downloadComboBox.Size = new Size(73, 33);
+            downloadComboBox.TabIndex = 13;
+            // 
+            // onlinePictureBox
+            // 
+            onlinePictureBox.Location = new Point(707, 12);
+            onlinePictureBox.Name = "onlinePictureBox";
+            onlinePictureBox.Size = new Size(14, 16);
+            onlinePictureBox.TabIndex = 19;
+            onlinePictureBox.TabStop = false;
+            // 
+            // onlineLable
+            // 
+            onlineLable.AutoSize = true;
+            onlineLable.Location = new Point(722, 11);
+            onlineLable.Name = "onlineLable";
+            onlineLable.Size = new Size(0, 14);
+            onlineLable.TabIndex = 20;
             // 
             // YoutubeVideoConverterToMp3
             // 
             AutoScaleDimensions = new SizeF(8F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 561);
+            Controls.Add(onlineLable);
+            Controls.Add(onlinePictureBox);
             Controls.Add(downloadComboBox);
             Controls.Add(downloadBtn);
             Controls.Add(videoLabel);
@@ -208,6 +231,7 @@ namespace YoutubeVideoDownloader
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)onlinePictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,5 +253,7 @@ namespace YoutubeVideoDownloader
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button downloadBtn;
         private ComboBox downloadComboBox;
+        private PictureBox onlinePictureBox;
+        private Label onlineLable;
     }
 }

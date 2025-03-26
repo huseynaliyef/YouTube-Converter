@@ -1,11 +1,21 @@
-﻿using YoutubeDownloader.Application.Implementations;
+﻿using System.Net.NetworkInformation;
+using YoutubeDownloader.Application.Implementations;
 using YoutubeDownloader.Application.Interfaces;
+using Timer = System.Windows.Forms.Timer;
 
 namespace YoutubeVideoDownloader
 {
     public partial class YoutubeVideoConverterToMp3 : Form
     {
         private readonly IDownloaderService _downloaderService;
+
+        private bool _isInternetAvailable;
+        public bool IsInternetAvailable
+        {
+            get => _isInternetAvailable;
+            set => _isInternetAvailable = value;
+        }
+
         public YoutubeVideoConverterToMp3()
         {
             InitializeComponent();
@@ -15,15 +25,60 @@ namespace YoutubeVideoDownloader
             downloadComboBox.Items.Add("Mp4");
             downloadComboBox.SelectedIndex = 0;
             downloadComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            linkBox.PlaceholderText = "Search";
+
+            // Initialize Timer
+            var timer = new Timer();
+            timer.Interval = 5000; // Check every 5 seconds
+            timer.Tick += TimerTick;
+            timer.Start();
+
+            // Initial check
+            UpdateInternetStatus();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            UpdateInternetStatus();
+        }
+
+        private void UpdateInternetStatus()
+        {
+            CheckInternetAvailable();
+
+            if (IsInternetAvailable)
+            {
+                onlinePictureBox.Image = Image.FromFile("./Resources/user-online-icon-1024x1024-33v8udca.png");
+                
+                onlineLable.Text = "Online";
+            }
+            else
+            {
+                onlinePictureBox.Image = Image.FromFile("./Resources/offline-icon-512x512-ly69ez5k.png");
+                onlineLable.Text = "Offline";
+            }
         }
 
         private async void searchBtn_Click(object sender, EventArgs e)
         {
+            if (IsInternetAvailable == false)
+            {
+                MessageBox.Show("Please Check your internet connection.");
+                return;
+            }
+
             await Search(linkBox.Text);
         }
 
         private async void downloadBtn_Click(object sender, EventArgs e)
         {
+            if (IsInternetAvailable == false)
+            {
+                MessageBox.Show("Please Check your internet connection.");
+                return;
+            }
+
             using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
             {
                 var title = downloadComboBox.SelectedIndex == 0 ? "music" : "video";
@@ -51,6 +106,14 @@ namespace YoutubeVideoDownloader
         {
             downloadComboBox.Visible = false;
             downloadBtn.Visible = false;
+        }
+
+        private async void linkBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                await Search(linkBox.Text);
+            }
         }
 
         #region private logic
@@ -108,14 +171,22 @@ namespace YoutubeVideoDownloader
             }
         }
 
-        #endregion
-
-        private async void linkBox_KeyDown(object sender, KeyEventArgs e)
+        private void CheckInternetAvailable()
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                await Search(linkBox.Text);
+                using (var ping = new Ping())
+                {
+                    var reply = ping.Send("8.8.8.8", 1000); // Google DNS
+                    IsInternetAvailable = reply.Status == IPStatus.Success;
+                }
+            }
+            catch
+            {
+                IsInternetAvailable = false;
             }
         }
+
+        #endregion
     }
 }
